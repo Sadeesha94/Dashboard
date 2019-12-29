@@ -1,0 +1,40 @@
+<div class="container" [class.mobile]="mobileQuery.matches">
+    <mat-toolbar class="toolbar">
+      <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+      <h1 class="app-name">Responsive App</h1>
+    </mat-toolbar>
+  
+    <mat-sidenav-container class="sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+      <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+        <mat-nav-list *ngFor="let item of menuItems">
+          
+          <mat-list-item *ngIf="item.subMenus.length == 0; else withSubMenu">
+            
+              <a mat-list-item routerLink="." [routerLink]="item.url" [routerLinkActive]="'active'">{{item.item}}</a>
+            
+          </mat-list-item>
+          
+          <ng-template  #withSubMenu>
+                <mat-accordion *ngIf="item.subMenus.length > 0">
+                  <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                    <mat-expansion-panel-header>
+                      <mat-panel-title>
+                        {{item.item}}
+                      </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    
+                      <mat-list-item *ngFor="let subItem of item.subMenus">
+                        <a mat-list-item [routerLink]="subItem.url" [routerLinkActive]="'active'">{{ subItem.item }}</a>
+                      </mat-list-item>
+                    
+                  </mat-expansion-panel>
+                </mat-accordion>
+          </ng-template>
+        </mat-nav-list>
+      </mat-sidenav>
+  
+      <mat-sidenav-content class="sidenav-content">
+        <router-outlet></router-outlet>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+  </div>

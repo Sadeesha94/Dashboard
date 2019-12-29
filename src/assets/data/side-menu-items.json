@@ -1,0 +1,26 @@
+[
+    {
+        "item": "DCS Dashboard",
+        "url": "/dcs-dashboard",
+        "subMenus": []
+    },
+    {
+        "item": "RCM Dashboard",
+        "url": "/rcm-dashboard",
+        "subMenus": []
+    },
+    {
+        "item": "Billing",
+        "url": "#",
+        "subMenus": [
+            {
+                "item": "DCS",
+                "url": "/dcs-billing"
+            },
+            {
+                "item": "RCM",
+                "url": "/rcm-billing"
+            }
+        ]
+    }
+]

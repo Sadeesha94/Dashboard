@@ -1,0 +1,12 @@
+@import '../../../scss/variables';
+
+.container {
+    background-color: $bg-color;
+}
+
+.example-card {
+    background-color: $bg-secondary;
+}
+.example-card .mat-card-title {
+    color: white;
+}
